@@ -22,7 +22,7 @@
 		}
 
 		.item {
-			font-size: 4em;
+			font-size: 6em;
 			font-weight: bold;
 			width: 100%;
 			text-align: center;
@@ -33,12 +33,24 @@
 
 <div class="container">
 	<div id="seconds" class="item"></div>
+	<div id="hms" class="item"></div>
+	<div id="hex" class="item"></div>
+	<div id="oct" class="item"></div>
+	<div id="bin" class="item"></div>
 </div>
 
 <script type="text/javascript">
 	setInterval(() => {
 		let seconds = -((new Date()).getTime() - (new Date("2022 GMT+03")).getTime() ) / 1000;
+		let int = parseInt(seconds)
+		let date = new Date(null);
+       	date.setSeconds(seconds);
+
 		document.getElementById("seconds").innerHTML = seconds;
+		document.getElementById("hms").innerHTML = date.toISOString().substr(11, 8);
+		document.getElementById("hex").innerHTML = "0x" + int.toString(16);
+		document.getElementById("oct").innerHTML = "0" + int.toString(8);
+		document.getElementById("bin").innerHTML = "0b" + int.toString(2);
 		// console.log(seconds);
 	}, 20);
 </script>
