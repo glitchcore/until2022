@@ -40,8 +40,15 @@
 </div>
 
 <script type="text/javascript">
-	setInterval(() => {
+
+	function next() {
 		let seconds = -((new Date()).getTime() - (new Date("2022 GMT+03")).getTime() ) / 1000;
+		if(seconds <= 0) {
+			window.location.href = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ';
+		} else {
+			setTimeout(next, 20)
+		}
+
 		let int = parseInt(seconds)
 		let date = new Date(null);
        	date.setSeconds(seconds);
@@ -52,7 +59,10 @@
 		document.getElementById("oct").innerHTML = "0" + int.toString(8);
 		document.getElementById("bin").innerHTML = "0b" + int.toString(2);
 		// console.log(seconds);
-	}, 20);
+	}
+
+	next();
+
 </script>
 </body>
 </html>
